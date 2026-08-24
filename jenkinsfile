@@ -1,0 +1,27 @@
+pileline{
+    agent any
+    stages{
+        stage('compile'){
+            steps{
+                dir('src'){
+                    bat 'javac hello.java'
+                }
+            }
+        }
+        stage('Run'){
+            steps{
+                dir('src'){
+                    bat 'java hello'
+                }
+            }
+        }
+    }
+    post{
+        success{
+            echo 'BUILD SUCCESSFUL'
+        }
+        failure{
+            echo 'BUILD FAILED'
+        }
+    }
+}
